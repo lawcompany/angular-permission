@@ -81,6 +81,7 @@
           return statePermissionMap
             .resolveRedirectState(rejectedPermission)
             .then(function (redirect) {
+              PermTransitionEvents.broadcastPermissionDeniedEvent();
               return transition.router.stateService.target(redirect.state, redirect.params, redirect.options);
             });
         });
